@@ -1,7 +1,7 @@
 'use strict';
 
 let bestFanApp = angular.module('bestFanApp', []);
-let username = "wasadigi";
+let username = getUsernameFromURL() || 'BinaryBrain';
 
 let secrets = "?client_id=893e4578ea3d2ae682a6&client_secret=2295a08d3545182af494410a7a516cc36090bc13";
 
@@ -74,4 +74,8 @@ function compareFans(a, b) {
 	} else {
 		return 0;
 	}
+}
+
+function getUsernameFromURL() {
+	return document.location.href.split('?')[1];
 }

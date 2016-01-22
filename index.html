@@ -14,12 +14,12 @@
 		<div id="fan-list">
 			<div class="fan" ng-repeat="fan in fans">
 				<div class="avatar">
-					<a href="{{ fan.html_url }}"><img src="{{ fan.avatar_url }}" title="{{ fan.login }}"></a>
+					<a href="?{{ fan.login }}"><img src="{{ fan.avatar_url }}" title="{{ fan.login }}"></a>
 				</div>
 				<div>
 					<h3>{{ fan.login }}</h3>
 					<span class="star">{{ fan.counter }}</span>
-					<a href="{{ fan.html_url }}">GitHub Profile</a>
+					<a href="?{{ fan.login }}">View Fans</a> &middot; <a href="{{ fan.html_url }}">GitHub Profile</a>
 				</div>
 			</div>
 		</div>
