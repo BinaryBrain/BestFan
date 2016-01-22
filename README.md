@@ -58,6 +58,10 @@ To display data, I use the `ng-repeat="fan in fans"` attribute to loop over ever
 
 To generate the graph at the top of the window, I use the `ng-style` attribute so I can use data from the scope to generate the graph as I want.
 
+## Graph
+
+The graph being pretty simple, I generated it manually (without using any overkill lib). It just shows the user the proportion of stars he has from each stargazers.
+
 ## Random Colors
 
 To generate graph's colors, I use the awesome lib [RandomColor by David Merfield](https://github.com/davidmerfield/randomColor).
@@ -66,7 +70,7 @@ It allows me to generate random colors that are beautiful and light. Otherwise, 
 
 ## Conclusion
 
-I pretty happy to see that works pretty well and it's always fun to see who like what you are doing.  
+I'm happy to see that works pretty well and it's always fun to see who like what you are doing.  
 I did discover that a user I didn't know has starred one of my repo and I went to his GitHub profile to see what he does. Turns out he's a pretty interesting coder!
 
 This project may enhance the social aspect of GitHub, which I particularly like.
