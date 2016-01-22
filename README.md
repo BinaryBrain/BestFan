@@ -48,7 +48,7 @@ We will then just count how many time we have a user in our array and that will 
 
 We then just have to sort every thing to make a nice ranking.
 
-## AnuglarJS
+## AngularJS
 
 I tried to use AngularJS as much as I could (without overdoing it) because it was also a part of the homework.
 
