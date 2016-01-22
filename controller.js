@@ -4,9 +4,10 @@ var bestFanApp = angular.module('bestFanApp', []);
 
 var username = getUsernameFromURL();
 var secrets = "?client_id=893e4578ea3d2ae682a6&client_secret=2295a08d3545182af494410a7a516cc36090bc13";
-var waitingRequests = 0;
+var waitingRequests = 0; // Used to sync requests
 var randomColors = [];
 
+// Main Controller
 bestFanApp.controller('mainController', function ($scope, $http) {
 	$scope.fans = [];
 	$scope.isUsernameDefined = !!username;
@@ -18,6 +19,8 @@ bestFanApp.controller('mainController', function ($scope, $http) {
 	$http.get('https://api.github.com/users/' + username + '/repos' + secrets).then(function(response) {
 		var data = response.data;
 		var fanUrls = [];
+		
+		// Loop on every repo
 		for (var repo of data) {
 			if (repo.stargazers_count > 0) {
 				fanUrls.push(repo.stargazers_url);
@@ -26,6 +29,7 @@ bestFanApp.controller('mainController', function ($scope, $http) {
 
 				// Get every stargazers
 				$http.get(repo.stargazers_url + secrets).then(function(response) {
+					// Loop on every stargazers of the given repo
 					for (var user of response.data) {
 						if (username !== user.login) {
 							totalStars++;
@@ -71,6 +75,7 @@ function generateRandomColors(number) {
 	return randomColor({ luminosity: 'light', count: number });
 }
 
+// Count how many times a fan is in the array
 function countFans(stargazers) {
 	var init = true;
 	if (stargazers.length == 1) {
@@ -111,6 +116,7 @@ function compareFans(a, b) {
 	}
 }
 
+// Allow us to copy/paste the link for a given user
 function getUsernameFromURL() {
 	return document.location.href.split('?')[1];
 }
