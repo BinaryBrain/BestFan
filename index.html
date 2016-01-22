@@ -6,14 +6,16 @@
 	<link rel="stylesheet/less" type="text/css" href="main.less" />
 	<script src="less.min.js"></script>
 	<script src="angular.min.js"></script>
+	<script src="randomColor.js"></script>
 	<script src="controller.js"></script>
 </head>
-<body>
-	<div ng-controller="mainController" id="scroll-wrapper">
+<body ng-controller="mainController" >
+	<div id="scroll-wrapper">
 		<div id="container">
 			<div id="title">
 				<h1>Best Fan</h1>
-				<em>Who is your best fan?</em>
+				<em>Who is your best fan?</em><br>
+				<em>Top of people who gave you stars on your GitHub repositories, also called stargazers</em>
 			</div>
 			
 			<input id="username-input" type="text" placeholder="GitHub Username" ng-keypress="onKeypress($event)" ng-model="username">
@@ -22,6 +24,7 @@
 			<div ng-if="isUsernameDefined">
 				<div id="fan-list">
 					<div class="fan" ng-repeat="fan in fans">
+						<div class="color-tag" ng-style="{ background: getColor($index) }"></div>
 						<div class="avatar">
 							<a href="?{{ fan.login }}"><img src="{{ fan.avatar_url }}" title="{{ fan.login }}"></a>
 						</div>
@@ -37,6 +40,14 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div id="graph">
+		<div
+			class="graph-block"
+			ng-repeat="fan in fans"
+			ng-style="{ width: {{ fan.counter * 100 / totalStars }} + '%', background: getColor($index) }"
+			title="{{ fan.login }}"
+		></div>
 	</div>
 </body>
 </html>

@@ -45,8 +45,10 @@ html, body {
 
 #fan-list {
 	.fan {
-		margin: 10px 0;
-		padding: 20px;
+		@padding: 30px;
+		position: relative;
+
+		padding: @padding;
 
 		border-bottom: 1px rgba(0, 0, 0, 0.5) solid;
 
@@ -60,6 +62,14 @@ html, body {
 			clear: both;
 		}
 
+		.color-tag {
+			position: absolute;
+			left: 0;
+			top: @padding;
+			bottom: @padding;
+			width: 5px;
+		}
+
 		.avatar {
 			float: left;
 			padding-right: 20px;
@@ -69,5 +79,23 @@ html, body {
 				height: 100px;
 			}
 		}
+	}
+}
+
+#graph {
+	height: 10px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+
+	.graph-block {
+		float: left;
+		height: 100%;
+		// border-right: 1px solid black;
+
+		&:last-child {
+			border: 0;
+		} 
 	}
 }
