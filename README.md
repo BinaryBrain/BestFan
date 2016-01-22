@@ -58,6 +58,12 @@ To display data, I use the `ng-repeat="fan in fans"` attribute to loop over ever
 
 To generate the graph at the top of the window, I use the `ng-style` attribute so I can use data from the scope to generate the graph as I want.
 
+## Random Colors
+
+To generate graph's colors, I use the awesome lib [RandomColor by David Merfield](https://github.com/davidmerfield/randomColor).
+
+It allows me to generate random colors that are beautiful and light. Otherwise, if we just use a RGB color with three random values, we would end up having a lot of brownish colors.
+
 ## Conclusion
 
 I pretty happy to see that works pretty well and it's always fun to see who like what you are doing.  
