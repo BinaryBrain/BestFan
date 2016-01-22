@@ -10,6 +10,8 @@
 </head>
 <body>
 	<div ng-controller="mainController">
+		<input type="text" placeholder="GitHub Username" ng-keypress="onKeypress($event)" ng-model="username">
+
 		<pre>{{ fans | json }}</pre>
 		<div id="fan-list">
 			<div class="fan" ng-repeat="fan in fans">

@@ -1,49 +1,59 @@
 'use strict';
 
-let bestFanApp = angular.module('bestFanApp', []);
-let username = getUsernameFromURL() || 'BinaryBrain';
+var bestFanApp = angular.module('bestFanApp', []);
+var username = getUsernameFromURL() || 'BinaryBrain';
 
-let secrets = "?client_id=893e4578ea3d2ae682a6&client_secret=2295a08d3545182af494410a7a516cc36090bc13";
+var secrets = "?client_id=893e4578ea3d2ae682a6&client_secret=2295a08d3545182af494410a7a516cc36090bc13";
 
-let waitingRequests = 0;
+var waitingRequests = 0;
 
 bestFanApp.controller('mainController', function ($scope, $http) {
 	$scope.fans = [];
-	let stargazers = []
+	$scope.isUsernameDefined = !!username;
 
-	$http.get(`https://api.github.com/users/${username}/repos` + secrets).then(response => {
-		let data = response.data;
-		let fanUrls = [];
-		for (let repo of data) {
+	var stargazers = []
+
+	$http.get(`https://api.github.com/users/${username}/repos` + secrets).then(function(response) {
+		var data = response.data;
+		var fanUrls = [];
+		for (var repo of data) {
 			if (repo.stargazers_count > 0) {
 				fanUrls.push(repo.stargazers_url);
 
 				waitingRequests++;
-				$http.get(repo.stargazers_url + secrets).then(response => {
-					for (let user of response.data) {
+				$http.get(repo.stargazers_url + secrets).then(function(response) {
+					for (var user of response.data) {
 						stargazers.push(user);
 					}
 
 					waitingRequests--;
 					
 					if (waitingRequests == 0) {
-						let fans = countFans(stargazers);
+						var fans = countFans(stargazers);
 						$scope.fans = fans;
 					};
 				});
 			}
 		}
 	});
+
+	$scope.onKeypress = function (event) {
+		if (event.keyCode !== 13) {
+			return;
+		}
+
+		document.location.href = '?' + $scope.username;
+	}
 });
 
 function countFans(stargazers) {
-	let init = true;
+	var init = true;
 	if (stargazers.length == 1) {
 		stargazers[0].counter = 1;
 		return stargazers;
 	}
 	
-	let output = stargazers.reduce((prev, curr) => {
+	var output = stargazers.reduce(function (prev, curr) {
 		// Init
 		if (init) {
 			prev.counter = 1;
@@ -62,7 +72,7 @@ function countFans(stargazers) {
 		return prev;
 	});
 
-	let fans = Array.from(output.values());
+	var fans = Array.from(output.values());
 	return fans.sort(compareFans);
 }
 
