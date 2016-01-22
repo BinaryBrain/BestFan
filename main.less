@@ -13,16 +13,39 @@ html, body {
 	background-size: cover;
 }
 
+#title {
+	text-align: center;
+}
+
+#container {
+	padding: 100px;
+}
+
+#username-input {
+	display: block;
+	text-align: center;
+	width: 400px;
+	margin: 50px auto;
+	padding: 10px;
+	font-size: 20px;
+}
+
 #fan-list {
 	.fan {
 		.avatar {
-			flaot: left;
+			float: left;
 			padding-right: 20px;
 
 			img {
 				width: 100px;
 				height: 100px;
 			}
+		}
+
+		&:after {
+			content:'';
+			display:block;
+			clear: both;
 		}
 	}
 }

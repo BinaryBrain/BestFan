@@ -1,10 +1,9 @@
 'use strict';
 
 var bestFanApp = angular.module('bestFanApp', []);
-var username = getUsernameFromURL() || 'BinaryBrain';
 
+var username = getUsernameFromURL();
 var secrets = "?client_id=893e4578ea3d2ae682a6&client_secret=2295a08d3545182af494410a7a516cc36090bc13";
-
 var waitingRequests = 0;
 
 bestFanApp.controller('mainController', function ($scope, $http) {
@@ -41,6 +40,8 @@ bestFanApp.controller('mainController', function ($scope, $http) {
 		if (event.keyCode !== 13) {
 			return;
 		}
+
+		console.log($scope.username)
 
 		document.location.href = '?' + $scope.username;
 	}
