@@ -19,11 +19,11 @@ To acess a given user list of repos, we can just call: `https://api.github.com/u
 It give us a huge array of object representing repos. Each repo contains:
 
 ```js
-	{
-		"stargazers_url": "https://api.github.com/repos/BinaryBrain/ant/stargazers",
-		"stargazers_count": 4,
-		// More stuff
-	}
+{
+	"stargazers_url": "https://api.github.com/repos/BinaryBrain/ant/stargazers",
+	"stargazers_count": 4,
+	// More stuff
+}
 ```
 
 If we than call the given URL (`stargazers_url`), we obtain a list of user in this form:
@@ -36,7 +36,7 @@ If we than call the given URL (`stargazers_url`), we obtain a list of user in th
 	"url": "https://api.github.com/users/BinaryBrain",
 	"html_url": "https://github.com/BinaryBrain",
 	// More stuff
-  }
+}
 ```
 
 ## Handling data
