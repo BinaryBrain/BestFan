@@ -14,12 +14,15 @@
 		<div id="container">
 			<div id="title">
 				<h1>Best Fan</h1>
-				<em>Who is your best fan?</em><br>
-				<em>Top of people who gave you stars on your GitHub repositories, also called stargazers</em>
 			</div>
 			
 			<input id="username-input" type="text" placeholder="GitHub Username" ng-keypress="onKeypress($event)" ng-model="username">
 			<p ng-if="error" id="error">Oops! An error has occured: {{ error }}</p>
+
+			<div id="description">
+				<p><strong>Who is your best fan?</strong><br>
+				Top of people who gave you stars on your GitHub repositories, also called stargazers.</p>
+			</div>
 
 			<div ng-if="isUsernameDefined">
 				<div id="fan-list">

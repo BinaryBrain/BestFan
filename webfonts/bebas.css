@@ -1,0 +1,32 @@
+/* Bebas */
+
+@font-face {
+	font-family: 'Bebas';
+	src: url('BebasNeue Bold.otf') format('opentype'), url('BebasNeue Bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Bebas';
+	src: url('BebasNeue Regular.otf') format('opentype'), url('BebasNeue Regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Bebas';
+	src: url('BebasNeue Book.otf') format('opentype'), url('BebasNeue Book.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Bebas';
+	src: url('BebasNeue Light.otf') format('opentype'), url('BebasNeue Light.ttf') format('truetype');
+	font-weight: 200;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Bebas';
+	src: url('BebasNeue Thin.otf') format('opentype'), url('BebasNeue Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
