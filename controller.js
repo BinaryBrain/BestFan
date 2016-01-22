@@ -12,7 +12,8 @@ bestFanApp.controller('mainController', function ($scope, $http) {
 
 	var stargazers = []
 
-	$http.get(`https://api.github.com/users/${username}/repos` + secrets).then(function(response) {
+	// Get the list of repos
+	$http.get('https://api.github.com/users/' + username + '/repos' + secrets).then(function(response) {
 		var data = response.data;
 		var fanUrls = [];
 		for (var repo of data) {
@@ -20,9 +21,13 @@ bestFanApp.controller('mainController', function ($scope, $http) {
 				fanUrls.push(repo.stargazers_url);
 
 				waitingRequests++;
+
+				// Get every stargazers
 				$http.get(repo.stargazers_url + secrets).then(function(response) {
 					for (var user of response.data) {
-						stargazers.push(user);
+						if (username !== user.login) {
+							stargazers.push(user);
+						}
 					}
 
 					waitingRequests--;
@@ -33,6 +38,12 @@ bestFanApp.controller('mainController', function ($scope, $http) {
 					};
 				});
 			}
+		}
+	}, function (response) {
+		if (response.status === 404) {
+			$scope.error = 'the user "' + username + '" doesn\'t exist.';
+		} else {
+			$scope.error = response.status + " - " + response.data.message;
 		}
 	});
 

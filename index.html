@@ -16,6 +16,7 @@
 		</div>
 		
 		<input id="username-input" type="text" placeholder="GitHub Username" ng-keypress="onKeypress($event)" ng-model="username">
+		<p ng-if="error" id="error">Oops! An error has occured: {{ error }}</p>
 
 		<div ng-if="isUsernameDefined">
 			<div id="fan-list">
