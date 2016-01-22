@@ -25,6 +25,8 @@
 			</div>
 
 			<div ng-if="isUsernameDefined">
+				<p ng-if="fans.length === 0">Sorry, but you don't have any fans. :'(</p>
+
 				<div id="fan-list">
 					<div class="fan" ng-repeat="fan in fans">
 						<div class="color-tag" ng-style="{ background: getColor($index) }"></div>
