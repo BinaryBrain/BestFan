@@ -56,6 +56,8 @@ I just have one controller with an input that passes its content from the view t
 
 To display data, I use the `ng-repeat="fan in fans"` attribute to loop over every stargazers and display their data.
 
+To generate the graph at the top of the window, I use the `ng-style` attribute so I can use data from the scope to generate the graph as I want.
+
 ## Conclusion
 
 I pretty happy to see that works pretty well and it's always fun to see who like what you are doing.  
