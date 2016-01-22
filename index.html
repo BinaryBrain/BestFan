@@ -9,25 +9,30 @@
 	<script src="controller.js"></script>
 </head>
 <body>
-	<div ng-controller="mainController" id="container">
-		<div id="title">
-			<h1>Best Fan</h1>
-			<em>Who is your best fan?</em>
-		</div>
-		
-		<input id="username-input" type="text" placeholder="GitHub Username" ng-keypress="onKeypress($event)" ng-model="username">
-		<p ng-if="error" id="error">Oops! An error has occured: {{ error }}</p>
+	<div ng-controller="mainController" id="scroll-wrapper">
+		<div id="container">
+			<div id="title">
+				<h1>Best Fan</h1>
+				<em>Who is your best fan?</em>
+			</div>
+			
+			<input id="username-input" type="text" placeholder="GitHub Username" ng-keypress="onKeypress($event)" ng-model="username">
+			<p ng-if="error" id="error">Oops! An error has occured: {{ error }}</p>
 
-		<div ng-if="isUsernameDefined">
-			<div id="fan-list">
-				<div class="fan" ng-repeat="fan in fans">
-					<div class="avatar">
-						<a href="?{{ fan.login }}"><img src="{{ fan.avatar_url }}" title="{{ fan.login }}"></a>
-					</div>
-					<div>
-						<h3>{{ fan.login }}</h3>
-						<span class="star">{{ fan.counter }}</span>
-						<a href="?{{ fan.login }}">View Fans</a> &middot; <a href="{{ fan.html_url }}">GitHub Profile</a>
+			<div ng-if="isUsernameDefined">
+				<div id="fan-list">
+					<div class="fan" ng-repeat="fan in fans">
+						<div class="avatar">
+							<a href="?{{ fan.login }}"><img src="{{ fan.avatar_url }}" title="{{ fan.login }}"></a>
+						</div>
+						<div>
+							<h3>{{ fan.login }}</h3>
+							<span class="star">{{ fan.counter }} star<span ng-if="fan.counter > 1">s</span></span>
+							<br>
+							<div class="links">
+								<a href="?{{ fan.login }}">View Fans</a> &middot; <a href="{{ fan.html_url }}">GitHub Profile</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
