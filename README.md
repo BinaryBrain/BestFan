@@ -18,7 +18,7 @@ To acess a given user list of repos, we can just call: `https://api.github.com/u
 
 It give us a huge array of object representing repos. Each repo contains:
 
-```json
+```js
 	{
 		"stargazers_url": "https://api.github.com/repos/BinaryBrain/ant/stargazers",
 		"stargazers_count": 4,
@@ -28,11 +28,11 @@ It give us a huge array of object representing repos. Each repo contains:
 
 If we than call the given URL (`stargazers_url`), we obtain a list of user in this form:
 
-```json
+```js
 {
 	"login": "BinaryBrain",
 	"id": 1102077,
-	"avatar_url": "https://avatars.githubusercontent.com/u/1102077?v=3"
+	"avatar_url": "https://avatars.githubusercontent.com/u/1102077?v=3",
 	"url": "https://api.github.com/users/BinaryBrain",
 	"html_url": "https://github.com/BinaryBrain",
 	// More stuff
